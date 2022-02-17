@@ -8,6 +8,7 @@ import {
   Route
 } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
+import Meter from './pages/Meter'
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         <Route exact path="/" element={<Index />}>   
         </Route>
         <Route exact path="/dashboard" element={<Dashboard/>}>
+        </Route>
+        <Route exact path="/meter" element={<Meter/>}>
         </Route>
       </Routes>
     </Router>
