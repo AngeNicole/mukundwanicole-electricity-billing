@@ -1,7 +1,7 @@
-import Home from '../../layouts/Home';
-import { getAllTestimonials, updateTestimonial, addTestimonial, deleteTestimonial, likeTestimonial, dislikeTestimonial } from '../../src/actions/testimonialActions';
+import TokenDetails from '../../components/ReceiveTokens.jsx/TokenDetails';
+import { getAllTokens, updateToken, addToken, deleteToken} from '../../components/actions/TokenActions';
 import { range } from "lodash";
-describe('Testmonial store', () => {
+describe('Token Details', () => {
 
 
     it('Initial State test', () => {
