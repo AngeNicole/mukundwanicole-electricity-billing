@@ -36,8 +36,8 @@ export default function TokenDetails(state = usertokens, action) {
                 return {
                     id: tokens.id,
                     meter: tokens.meter,
-                    amount: tokens.amount
-                    
+                    amount: tokens.amount,
+                    status: tokens.status
                 }
             })
             break
@@ -50,7 +50,8 @@ export default function TokenDetails(state = usertokens, action) {
                     return {
                         id: tokens.id,
                         meter: tokens.payload.meter,
-                        amount: tokens.payload.amount
+                        amount: tokens.payload.amount,
+                        status: 1
                     }
                 }
 
