@@ -1,0 +1,5 @@
+export const ADD_TOKEN = "addToken"
+export const GET_ALL_TOKENS = "getAllTokens"
+export const GET_TOKENS = "getToken"
+export const UPDATE_TOKEN = "updateToken"
+export const DELETE_TOKEN = "deleteToken"
