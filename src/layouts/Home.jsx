@@ -1,5 +1,5 @@
 import Button from "../components/shared/Button";
-import Token from "../components/ReceiveTokens.jsx/TokenDetails";
+import Token from "../components/ReceiveTokens/TokenDetails";
 import Navbar from "../components/shared/Navbar";
 
 export default function Home() {
