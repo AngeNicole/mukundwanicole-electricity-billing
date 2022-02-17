@@ -6,143 +6,81 @@ describe('Token Details', () => {
 
     it('Initial State test', () => {
         // Response body sample
-        const initialState = [
+        const usertokens = [
             {
                 id: 1,
-                OwnerFullName: "ntwari egide",
-                OwnerId: 1,
-                testimonialType: "illiness",
-                testimonialTitle: "23 Years On Bed",
-                testimonialBody: "Jamaica Hospital Medical Center regularly receives letters of thanks from former patients or their family members for the high level of care we provide throughout our facility.",
-                views: 1,
-                likes: 0,
-                dislikes: 0
+                meter: 28932455,
+                amount: 40000
             },
             {
                 id: 2,
-                OwnerFullName: "mugisha jules",
-                OwnerId: 1,
-                testimonialType: "illiness",
-                testimonialTitle: "23 Years On Bed",
-                testimonialBody: "Jamaica Hospital Medical Center regularly receives letters of thanks from former patients or their family members for the high level of care we provide throughout our facility.",
-                views: 1,
-                likes: 0,
-                dislikes: 0
+                meter: 43748328,
+                amount: 43000
             }
         ]
 
-        expect(testimonialsStore.getState()).toEqual(initialState)
+        expect(tokenDetails.getState()).toEqual(usertokens)
     })
 
-    it("add testimonials test", async () => {
-        const newTestimony = {
+    it("add token test", async () => {
+        const newToken = {
             id: 3,
-            OwnerFullName: "Divine elsa",
-            OwnerId: 1,
-            testimonialType: "illiness",
-            testimonialTitle: "23 Years On Bed",
-            testimonialBody: "Jamaica Hospital Medical Center regularly receives letters of thanks from former patients or their family members for the high level of care we provide throughout our facility.",
-            views: 1,
-            likes: 0,
-            dislikes: 0
+            meter: 43984759,
+            amount: 50000
         }
 
 
-        const initialLength = testimonialsStore.getState().length  // number of testimonials before addition
+        const initialLength = tokenDetails.getState().length 
 
-        await testimonialsStore.dispatch(addTestimonial(newTestimony))
+        await tokenDetails.dispatch(addToken(newTestimony))
 
-        expect(testimonialsStore.getState().length).toBeGreaterThan(initialLength)
+        expect(tokenDetails.getState().length).toBeGreaterThan(initialLength)
 
-        expect(testimonialsStore.getState()[2].OwnerFullName).toEqual(newTestimony.OwnerFullName)
+        expect(tokenDetails.getState()[2].meter).toEqual(newToken.meter)
     })
 
-    it("like testimonials", async () => {
-        const testimonialToLike = testimonialsStore.getState()[0]
 
-        await testimonialsStore.dispatch(likeTestimonial(testimonialToLike))
-
-        expect(testimonialsStore.getState()[0].likes).toBeGreaterThan(testimonialToLike.likes)
-
-    })
-
-    it('Update testmonial test', async () => {
+    it('Update token test', async () => {
         // Response body sample
         const stateToUpdate = {
             id: 2,
-            OwnerFullName: "mugisha jules",
-            OwnerId: 1,
-            testimonialType: "illiness",
-            testimonialTitle: "30 Years On Bed",
-            testimonialBody: "Rwanda Hospital Medical Center regularly receives letters of thanks from former patients or their family members for the high level of care we provide throughout our facility.",
-            views: 1,
-            likes: 0,
-            dislikes: 0
+            meter: 43847593,
+            amount: 60000
         }
 
-        await testimonialsStore.dispatch(updateTestimonial(stateToUpdate))
-        expect(testimonialsStore.getState()[1].OwnerFullName).toEqual(stateToUpdate.OwnerFullName)
+        await tokenDetails.dispatch(updateToken(stateToUpdate))
+        expect(tokenDetails.getState()[1].meter).toEqual(stateToUpdate.meter)
     })
 
 
-    it('Update Unexisting testmonial test', async () => {
+    it('Update Unexisting token test', async () => {
         // Response body sample
         const stateToUpdate = {
             id: 4,
-            OwnerFullName: "mugisha jules",
-            OwnerId: 1,
-            testimonialType: "illiness",
-            testimonialTitle: "30 Years On Bed",
-            testimonialBody: "Rwanda Hospital Medical Center regularly receives letters of thanks from former patients or their family members for the high level of care we provide throughout our facility.",
-            views: 1,
-            likes: 0,
-            dislikes: 0
+            meter: 65448934,
+            amount: 4398473
         }
 
-        await testimonialsStore.dispatch(updateTestimonial(stateToUpdate))
-        expect(testimonialsStore.getState()[1]).not.toEqual(stateToUpdate)
+        await tokenDetails.dispatch(updateToken(stateToUpdate))
+        expect(tokenDetails.getState()[1]).not.toEqual(stateToUpdate)
     })
 
-    it('View testmonial test', async () => {
+    it("delete tokens", async () => {
+
+        const initialLength = tokenDetails.getState().length
+
+        await tokenDetails.dispatch(deleteToken(tokenDetails.getState()[1]))
+
+        expect(tokenDetails.getState().length).toBeLessThan(initialLength)
+    })
+
+    it('View token test', async () => {
         // Response body sample
 
-        const initialState = testimonialsStore.getState()
+        const initialState = tokenDetails.getState()
         let views = initialState[0].views
-        await testimonialsStore.dispatch(getAllTestimonials())
-        expect(testimonialsStore.getState()[0].views).toEqual(views + 1)
-        ++views
-
-        for (const i in range(40))
-            await testimonialsStore.dispatch(getAllTestimonials())
-
-        expect(testimonialsStore.getState()[0].views).toEqual(views + 40)
-    })
-
-    it('Dislike testmonial test', async () => {
-        // Response body sample
-
-        const testMonialToReact = {
-            id: 2,
-            OwnerId: 1,
-        }
-
-        const likes = 40
-        for (const i in range(likes))
-            await testimonialsStore.dispatch(likeTestimonial(testMonialToReact))
-
-        const dislikes = 20
-        for (const i in range(dislikes))
-            testimonialsStore.dispatch(dislikeTestimonial(testMonialToReact))
-
-        expect(testimonialsStore.getState()[1].dislikes).toEqual(likes - dislikes)
-    })
-    it("delete testimonials", async () => {
-
-        const initialLength = testimonialsStore.getState().length
-
-        await testimonialsStore.dispatch(deleteTestimonial(testimonialsStore.getState()[1]))
-
-        expect(testimonialsStore.getState().length).toBeLessThan(initialLength)
+        await tokenDetails.dispatch(getAllTokens())
+        expect(tokenDetails.getState().length).toEqual(initialLength)
     })
 
 })
