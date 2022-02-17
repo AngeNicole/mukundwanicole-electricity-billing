@@ -2,7 +2,7 @@ import Home from "../layouts/Home"
 
 
 export default function Index() {
-    const users = [
+    const Fakeusers = [
         {
             image: './src/images/p1.png',
             title: 'Sizzil Box',
