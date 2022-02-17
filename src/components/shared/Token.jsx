@@ -1,5 +1,3 @@
-
-
 export default function Token(props) {
     return (
         <div className="mt-2">
@@ -9,6 +7,8 @@ export default function Token(props) {
                         placeholder-gray-300 rounded w-full px-4 text-gray-200 leading-tight focus:outline-none
                         focus:shadow-outline" id="username" type="text" placeholder={`${props.holder}`} />
             </div >
+
+
         </div>
     )
 }
