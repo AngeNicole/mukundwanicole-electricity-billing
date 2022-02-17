@@ -5,12 +5,14 @@ let usertokens = [
     {
         id: 1,
         meter: 28932455,
-        amount: 40000
+        amount: 40000,
+        status: 0
     },
     {
         id: 2,
         meter: 43748328,
-        amount: 43000
+        amount: 43000,
+        status: 0
     }
 ]
 
@@ -24,7 +26,8 @@ export default function TokenDetails(state = usertokens, action) {
                 {
                     id: Math.floor((Math.random() * 1000) + 1),
                     meter: action.payload.tokenMeter,
-                    amount: action.payload.tokenAmount
+                    amount: action.payload.tokenAmount,
+                    status: 0
                 }
             ]
             break
@@ -34,6 +37,7 @@ export default function TokenDetails(state = usertokens, action) {
                     id: tokens.id,
                     meter: tokens.meter,
                     amount: tokens.amount
+                    
                 }
             })
             break
