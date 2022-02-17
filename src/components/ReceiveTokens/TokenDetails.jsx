@@ -1,5 +1,5 @@
-import { act } from "react-dom/test-utils"
 import * as actions from "../actions/ActionTypes"
+
 
 let usertokens = [
     {
@@ -16,13 +16,13 @@ let usertokens = [
     }
 ]
 
-export default function TokenDetails(state = usertokens, action) {
+export default function TokenDetails(stateToken = usertokens, action) {
     switch (action.type) {
         case actions.RESET_TOKEN_STORAGE:
             return action.payload
         case actions.ADD_TOKEN:
             return [
-                ...state,
+                ...stateToken,
                 {
                     id: Math.floor((Math.random() * 1000) + 1),
                     meter: action.payload.tokenMeter,
@@ -32,7 +32,7 @@ export default function TokenDetails(state = usertokens, action) {
             ]
             break
         case actions.GET_ALL_TOKENS:
-            return state.map(tokens => {
+            return stateToken.map(tokens => {
                 return {
                     id: tokens.id,
                     meter: tokens.meter,
@@ -42,10 +42,10 @@ export default function TokenDetails(state = usertokens, action) {
             })
             break
         case actions.GET_TOKEN:
-            return state.filter(token => token.id === action.payload.id)
+            return stateToken.filter(token => token.id === action.payload.id)
             break
         case actions.UPDATE_TOKEN:
-            return state.map(tokens => {
+            return stateToken.map(tokens => {
                 if (tokems.id === action.payload.id) {
                     return {
                         id: tokens.id,
@@ -59,10 +59,10 @@ export default function TokenDetails(state = usertokens, action) {
             })
             break
         case actions.DELETE_TOKEN:
-            return state.filter(tokens => tokens.id !== action.payload.id)
+            return stateToken.filter(tokens => tokens.id !== action.payload.id)
             break
     
         default:
-            return state
+            return stateToken
     }
 }

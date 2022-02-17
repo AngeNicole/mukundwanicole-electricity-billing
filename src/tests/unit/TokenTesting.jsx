@@ -1,6 +1,5 @@
-import TokenDetails from '../../components/ReceiveTokens.jsx/TokenDetails';
+import TokenDetails from '../../components/ReceiveTokens/TokenDetails'
 import { getAllTokens, updateToken, addToken, deleteToken} from '../../components/actions/TokenActions';
-import { range } from "lodash";
 describe('Token Details', () => {
 
 
