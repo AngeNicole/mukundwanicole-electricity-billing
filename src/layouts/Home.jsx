@@ -1,5 +1,5 @@
 import Button from "../components/shared/Button";
-import Token from "../components/ReceiveTokens/TokenDetails";
+import Token from "../components/shared/Token";
 import Navbar from "../components/shared/Navbar";
 
 export default function Home() {
@@ -7,9 +7,9 @@ export default function Home() {
         <div className="bg-red-900 w-full h-screen grid grid-cols-8">
             <div className="col-span-2">
             </div>
-            <div className="col-span-4 border p-3 m-20">
+            <div className="col-span-4 border m-20">
                 <Navbar />
-                <div className=" p-16 rounded-xl">
+                <div className=" px-16 py-12 rounded-xl">
                     <Token
                         label="Meter Number"
                         holder="23398420"
